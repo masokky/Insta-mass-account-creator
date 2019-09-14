@@ -1,6 +1,6 @@
 """ author: feezyhendrix
 
-    main function borcore
+    main function botcore
  """
 
 from time import sleep
@@ -10,7 +10,7 @@ import modules.config as config
 # importing generated info
 import modules.generateaccountinformation as accnt
 from modules.storeusername import store
-from .activate_account import get_activation_url
+# from .activate_account import get_activation_url
 # library import
 from selenium import webdriver
 from selenium.webdriver import ActionChains
@@ -18,9 +18,9 @@ from selenium.webdriver.common.keys import Keys  # and Krates
 import requests
 import re
 import logging
-from fake_useragent import UserAgent
+# from fake_useragent import UserAgent
 
-from pymailutils import Imap
+# from pymailutils import Imap
 
 class AccountCreator():
     account_created = 0
@@ -47,7 +47,7 @@ class AccountCreator():
         # chrome_options.add_argument('headless')
         # ua = UserAgent()
         # user_agent = ua.random
-        chrome_options.add_argument('--user-agent="Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; Microsoft; Lumia 640 XL LTE) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Mobile Safari/537.36 Edge/12.10166"')
+        chrome_options.add_argument('--user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"')
         # chrome_options.add_argument("--incognito")
         chrome_options.add_argument('window-size=1200x600')
         driver = webdriver.Chrome(chrome_options=chrome_options)
@@ -128,11 +128,14 @@ class AccountCreator():
         sleep(4)
         # After the first fill save the account account_info
         store(account_info)
-
+        
+        """
+            Currently buggy code.
+        """
         # Activate the account
-        confirm_url = get_activation_url(account_info['email'])
-        logging.info("The confirm url is {}".format(confirm_url))
-        driver.get(confirm_url)
+        # confirm_url = get_activation_url(account_info['email'])
+        # logging.info("The confirm url is {}".format(confirm_url))
+        # driver.get(confirm_url)
 
         driver.close()
 
